@@ -2,16 +2,24 @@ package com.wys.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 產品系列
+ * @author Alvin
+ *
+ */
 @Entity
 @Table(name = "product_series")
 public class ProductSeries {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "series_id")
-	private int seriesId;
+	private Integer seriesId;
 	
 	@Column(name = "series_name")
 	private String seriesName;
@@ -22,11 +30,11 @@ public class ProductSeries {
     @Column(name = "orders")
     private Integer orders;
 
-	public int getSeriesId() {
+	public Integer getSeriesId() {
 		return seriesId;
 	}
 
-	public void setSeriesId(int seriesId) {
+	public void setSeriesId(Integer seriesId) {
 		this.seriesId = seriesId;
 	}
 
