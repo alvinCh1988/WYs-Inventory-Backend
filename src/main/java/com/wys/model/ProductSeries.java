@@ -18,13 +18,13 @@ public class ProductSeries {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "series_id", length = 3)
+    @Column(name = "series_id", length = 6)
 	private Integer seriesId;
 	
 	@Column(name = "series_name", length = 15)
 	private String seriesName;
 	
-	@Column(name = "series_color", nullable = true , length = 15)
+	@Column(name = "series_color", length = 15, nullable = true)
 	private String seriesColor;
           
     @Column(name = "orders", length = 3)

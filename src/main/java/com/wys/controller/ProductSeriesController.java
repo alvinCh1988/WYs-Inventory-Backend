@@ -22,9 +22,9 @@ public class ProductSeriesController {
 		return "Hello World ~!!";
 	}
 
-	public List<ProductSeries> getProductSeries() {
-
-		return null;
+	@GetMapping("/tree")
+	public List<Object> getProductSeries() {
+		return productSeriesService.getInventoryTree();
 	}
 
 }
