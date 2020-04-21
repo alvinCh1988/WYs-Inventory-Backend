@@ -27,7 +27,7 @@ public class ProductSeries {
 	@Column(name = "series_color", length = 15, nullable = true)
 	private String seriesColor;
           
-    @Column(name = "orders", length = 3)
+    @Column(name = "orders", length = 3, nullable = true)
     private Integer orders;
 
 	public Integer getSeriesId() {

@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 /**
  * 庫存狀態
  * @author Alvin
@@ -37,16 +39,18 @@ public class InventoryType {
 	private String pic_src;
 	
 	@Column(name = "inventory", length = 3)
-	private Integer inventory;
+	private int inventory = 0;
 	
 	@Column(name = "unassigned", length = 3)
-	private Integer unassigned;
+	private int unassigned = 0;
 	
-    @Column(name = "orders", length = 3)
+	@Column(name = "orders", length = 3, nullable = true)
     private Integer orders;
 	
 	@Column(name = "modify_date",insertable=false, updatable=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	private Timestamp modifyDate;
+//	@Column(name = "modify_date",insertable=false, updatable=false)
+	@CreationTimestamp
+	private Date modifyDate;
 
 	public Integer getTypeId() {
 		return typeId;
@@ -88,19 +92,19 @@ public class InventoryType {
 		this.pic_src = pic_src;
 	}
 
-	public Integer getInventory() {
+	public int getInventory() {
 		return inventory;
 	}
 
-	public void setInventory(Integer inventory) {
+	public void setInventory(int inventory) {
 		this.inventory = inventory;
 	}
 
-	public Integer getUnassigned() {
+	public int getUnassigned() {
 		return unassigned;
 	}
 
-	public void setUnassigned(Integer unassigned) {
+	public void setUnassigned(int unassigned) {
 		this.unassigned = unassigned;
 	}
 
@@ -112,11 +116,11 @@ public class InventoryType {
 		this.orders = orders;
 	}
 
-	public Timestamp getModifyDate() {
+	public Date getModifyDate() {
 		return modifyDate;
 	}
 
-	public void setModifyDate(Timestamp modifyDate) {
+	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
 

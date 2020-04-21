@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wys.model.ProductSeries;
 import com.wys.repository.ProductSeriesRepository;
 
 @Service()
@@ -18,7 +19,7 @@ public class ProductSeriesService {
 
 	public List<Object> getInventoryTree() {
 
-		List<Object> list = new ArrayList<Object>();
+		List<Object> treeDataList = new ArrayList<Object>();
 
 		String lastItme = null;
 		List<Object> storageLocList = new ArrayList<Object>();
@@ -29,20 +30,8 @@ public class ProductSeriesService {
 		Map<String, Object> seriesMap = new HashMap<String, Object>();
 
 		List<Object[]> treeData = productSeriesRepository.getInventoryTree();
+		
 		for (Object[] o : treeData) {
-
-			String newSeries = o[0].toString();
-			if (!newSeries.equals(lastSeries)) {
-				if (lastSeries != null) {
-					seriesMap.put("products", prodList);
-					list.add(seriesMap);
-					prodList = new ArrayList<Object>();
-				}
-				seriesMap = new HashMap<String, Object>();
-				seriesMap.put("series", o[0].toString());
-			}
-			lastSeries = o[0].toString();
-
 			
 			String newItem = o[1].toString();
 			if (!newItem.equals(lastItme)) {
@@ -63,10 +52,36 @@ public class ProductSeriesService {
 			assignMap.put("quantity", o[5].toString());
 			assignMap.put("update", o[6].toString());
 			storageLocList.add(assignMap);
-
+			
+			
+			String newSeries = o[0].toString();
+			if (!newSeries.equals(lastSeries)) {
+				if (lastSeries != null) {
+					seriesMap.put("products", prodList);
+					treeDataList.add(seriesMap);
+					prodList = new ArrayList<Object>();
+				}
+				seriesMap = new HashMap<String, Object>();
+				seriesMap.put("series", o[0].toString());
+			}
+			lastSeries = o[0].toString();
+			
 		}
+		inventoryTypeMap.put("storageLoc", storageLocList);
+		prodList.add(inventoryTypeMap);
+		seriesMap.put("products", prodList);
+		treeDataList.add(seriesMap);
 
-		return list;
+		return treeDataList;
+	}
+	
+	/**
+	 * 新增產品系列
+	 * @param productSeries
+	 * @return
+	 */
+	public ProductSeries save(ProductSeries productSeries) {
+		return productSeriesRepository.save(productSeries);
 	}
 
 }

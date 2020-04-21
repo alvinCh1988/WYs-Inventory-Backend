@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 /**
  * 產品分配
  * @author Alvin
@@ -34,7 +36,9 @@ public class ProductAssign {
 	private Integer quantity;
 	
 	@Column(name = "modify_date",insertable=false, updatable=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	private Timestamp modifyDate;
+//	@Column(name = "modify_date",insertable=false, updatable=false)
+	@CreationTimestamp
+	private Date modifyDate;
 
 	public Integer getAssignId() {
 		return assignId;
@@ -68,11 +72,11 @@ public class ProductAssign {
 		this.quantity = quantity;
 	}
 
-	public Timestamp getModifyDate() {
+	public Date getModifyDate() {
 		return modifyDate;
 	}
 
-	public void setModifyDate(Timestamp modifyDate) {
+	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
 
