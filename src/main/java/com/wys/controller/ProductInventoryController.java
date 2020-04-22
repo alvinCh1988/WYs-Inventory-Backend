@@ -5,18 +5,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wys.model.InventoryType;
-import com.wys.service.InventoryTypeService;
+import com.wys.model.ProductInventory;
+import com.wys.service.ProductInventoryService;
 
 @RestController
-public class InventoryTypeController {
+public class ProductInventoryController {
 	
 	@Autowired
-	private InventoryTypeService inverntoryService;
+	private ProductInventoryService inverntoryService;
 	
 	@PostMapping("/postInventoryType")
-	public InventoryType postType(
-			@RequestBody InventoryType inventoryType) {
+	public ProductInventory postType(
+			@RequestBody ProductInventory inventoryType) {
 		return inverntoryService.save(inventoryType);
 	}
 

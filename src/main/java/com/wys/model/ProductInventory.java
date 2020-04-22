@@ -19,7 +19,7 @@ import org.hibernate.annotations.CreationTimestamp;
  */
 @Entity
 @Table(name = "inventory_type")
-public class InventoryType {
+public class ProductInventory {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
