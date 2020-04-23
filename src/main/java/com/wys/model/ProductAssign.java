@@ -29,14 +29,13 @@ public class ProductAssign {
 	@Column(name = "type_id", length = 3)
 	private Integer typeId;
 	
-	@Column(name = "location", length = 15)
-	private String location;
+	@Column(name = "location_id", length = 3)
+	private Integer locationId;
 	
 	@Column(name = "quantity", length = 3)
 	private Integer quantity;
 	
 	@Column(name = "modify_date",insertable=false, updatable=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-//	@Column(name = "modify_date",insertable=false, updatable=false)
 	@CreationTimestamp
 	private Date modifyDate;
 
@@ -56,12 +55,12 @@ public class ProductAssign {
 		this.typeId = typeId;
 	}
 
-	public String getLocation() {
-		return location;
+	public Integer getLocation() {
+		return locationId;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setLocation(Integer locationId) {
+		this.locationId = locationId;
 	}
 
 	public Integer getQuantity() {

@@ -26,18 +26,22 @@ public class PurchaseDetail {
 	@Column(name = "type_id", length = 3)
 	private Integer typeId;
 	
+	// 採購日期
 	@Column(name = "purchase_date", length = 20)
 	private String purchaseDate;
 	
+	// 數量
 	@Column(name = "quantity", length = 3)
 	private Integer quantity;
 	
+	// 價格
 	@Column(name = "amount", length = 5)
 	private Integer amount;
 	
 	@Column(name = "remark", nullable = true)
 	private String remark;
 
+	
 	public Integer getPurchaseId() {
 		return purchaseId;
 	}

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wys.model.Location;
 import com.wys.model.ProductSeries;
 import com.wys.service.ProductSeriesService;
 
@@ -17,19 +18,14 @@ public class ProductSeriesController {
 	@Autowired
 	private ProductSeriesService productSeriesService;
 
-	@GetMapping("/hello")
-	public String getHello() {
-		System.out.println("test!");
-		return "Hello World ~!!";
-	}
-
+	
 	@GetMapping("/tree")
 	public List<Object> getProductSeries() {
 		return productSeriesService.getInventoryTree();
 	}
 	
-	@PostMapping("/postSeries")
-	public ProductSeries postSeries(
+	@PostMapping("/addSeries")
+	public ProductSeries addSeries(
 			@RequestBody ProductSeries productSeries) {
 		return productSeriesService.save(productSeries);
 	}

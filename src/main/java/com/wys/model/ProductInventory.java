@@ -48,7 +48,6 @@ public class ProductInventory {
     private Integer orders;
 	
 	@Column(name = "modify_date",insertable=false, updatable=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-//	@Column(name = "modify_date",insertable=false, updatable=false)
 	@CreationTimestamp
 	private Date modifyDate;
 

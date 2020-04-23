@@ -8,7 +8,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wys.model.Location;
 import com.wys.model.ProductSeries;
+import com.wys.repository.LocationRepository;
 import com.wys.repository.ProductSeriesRepository;
 
 @Service()
@@ -16,7 +18,11 @@ public class ProductSeriesService {
 
 	@Autowired
 	private ProductSeriesRepository productSeriesRepository;
-
+	
+	@Autowired
+	private LocationRepository locationRepository;
+	
+	
 	public List<Object> getInventoryTree() {
 
 		List<Object> treeDataList = new ArrayList<Object>();
